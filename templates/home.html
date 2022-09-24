@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} home {% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+   <h4 style="color: orange"> HI {{ user.username }}!! You Are {{ user.age }} Years Old.</h4>
+    <a href="{% url 'logout' %}"> LogOut </a>
+    <br>
+    <a href="{% url 'article_list' %}"> Articles </a>
+{% else %}
+    <h4 style="color: red"> unfortunately, you didn't log in. </h4>
+    <a href="{% url 'login' %}"> LogIn </a> |
+    <a href="{% url 'signup' %}"> SignUp </a>
+{% endif %}
+{% endblock %}
